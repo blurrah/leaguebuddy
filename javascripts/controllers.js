@@ -2,7 +2,7 @@ function ChampionListCtrl($scope, $http) {
 	$http.get('javascripts/json/champions.json').success(function(data){
 		$scope.champions = data;
 	});
-	
+	$scope.summonerName = 'Summoner';
 	$scope.orderProp = 'age';
 }
 
