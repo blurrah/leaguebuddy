@@ -37,7 +37,7 @@
 
 })(jQuery, this);
 
-angular.module('championcat', []).
+angular.module('championcat', ['championcatServices']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/champions', {templateUrl: 'partials/champion-list.html',   controller: ChampionListCtrl}).
@@ -45,4 +45,9 @@ angular.module('championcat', []).
       otherwise({redirectTo: '/champions'});
 }]);
 
-
+angular.module('championcatServices', ['ngResource']).
+	factory('Champion', function($resource){
+		return $resource('javascripts/json/champions.json', {}, {
+			query: {method:'GET', isArray:true}
+		});
+	});

@@ -5,7 +5,7 @@
 </div>
 <section>
 		<h2>Welcome {{summonerName}}!</h2>
-			<a href="#" class="button" data-reveal-id="championInput">TEST YO!</a>
+			<a href="#" data-reveal-id="championInput">TEST YO!</a>
 			<select ng-model="orderProp">
 				<option value="name">Alphabetical</option>
 				<option value="age">Newest</option>
@@ -14,7 +14,7 @@
 			
 			<ul>
 				<li ng-repeat="champion in champions | filter:query | orderBy:orderProp">
-					<a href="#/champion/{{champion.name}}"><img src="http://www.championselect.net/images/CS_Champ_Icons/{{champion.image}}"></a>
+					<a href="#/champion/{{champion.name}}">{{champion.name}}</a>
 				</li>
 			</ul>
 		</section>

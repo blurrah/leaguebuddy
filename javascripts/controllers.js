@@ -1,7 +1,6 @@
-function ChampionListCtrl($scope, $http) {
-	$http.get('javascripts/json/champions.json').success(function(data){
-		$scope.champions = data;
-	});
+function ChampionListCtrl($scope, Champion) {
+	$scope.champions = Champion.query();
+	
 	$scope.summonerName = 'Summoner';
 	$scope.orderProp = 'age';
 }

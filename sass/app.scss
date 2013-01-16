@@ -58,6 +58,10 @@ header { @include outerRow();
 	background-color: #2e2e2e;
 }
 
+#main {@include outerRow();
+	section {@include column(12); }
+}
+
 nav {
 	margin: 20px 0;
 	ul {
