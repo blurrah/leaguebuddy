@@ -1,0 +1,13 @@
+<section>
+			<select ng-model="orderProp">
+				<option value="name">Alphabetical</option>
+				<option value="age">Newest</option>
+			</select>
+			<input type="text" ng-model="query">
+			
+			<ul>
+				<li ng-repeat="champion in champions | filter:query | orderBy:orderProp">
+					<a href="#/champion/{{champion.name}}"><img src="http://www.championselect.net/images/CS_Champ_Icons/{{champion.image}}"></a>
+				</li>
+			</ul>
+		</section>
