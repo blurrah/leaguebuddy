@@ -1,8 +1,19 @@
-function ChampionListCtrl($scope, Champion) {
+function IntroCtrl($scope, localStorageService) {
+	localStorageService.clearAll();
+	$scope.summonerName = "Summoner";
+	$scope.typeahead = ['Blurrahz', 'Prelth', 'Piemelplas', 'Awesome Possum'];
+
+$scope.$watch('summonerName', function(value){
+	localStorageService.add('summonerName', value);
+	$scope.summonerName = localStorageService.get('summonerName');
+});
+
+}
+
+function ChampionListCtrl($scope, Champion, localStorageService) {
 	$scope.champions = Champion.query();
 	
-	$scope.summonerName = 'Summoner';
-	$scope.orderProp = 'age';
+	$scope.summonerName = localStorageService.get('summonerName');
 }
 
 function ChampionDetailCtrl($scope, $routeParams) {

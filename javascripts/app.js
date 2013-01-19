@@ -37,13 +37,16 @@
 
 })(jQuery, this);
 
-angular.module('championcat', ['championcatServices']).
+
+angular.module('championcat', ['championcatServices', 'LocalStorageModule']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/champions', {templateUrl: 'partials/champion-list.html',   controller: ChampionListCtrl}).
       when('/champions/:championId', {templateUrl: 'partials/champion-detail.html', controller: ChampionDetailCtrl}).
+      when('/', {templateUrl: 'partials/intro.html', controller: IntroCtrl}).
       otherwise({redirectTo: '/champions'});
 }]);
+
 
 angular.module('championcatServices', ['ngResource']).
 	factory('Champion', function($resource){
@@ -51,3 +54,4 @@ angular.module('championcatServices', ['ngResource']).
 			query: {method:'GET', isArray:true}
 		});
 	});
+

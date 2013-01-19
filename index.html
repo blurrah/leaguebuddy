@@ -18,10 +18,13 @@
 	<script src="javascripts/foundation/modernizr.foundation.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
 	<script src="javascripts/angular-resource.min.js"></script>
+	<script src="javascripts/localStorageModule.js"></script>
+	<script src="javascripts/angular-strap.min.js"></script>
 	
 		<!-- Included JS Files (Uncompressed) -->
 	<script src="javascripts/foundation/jquery.js"></script>
 	<script src="javascripts/foundation/jquery.foundation.reveal.js"></script>
+	<script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
 		
 
   <!-- Application Javascript, safe to override -->
@@ -32,15 +35,39 @@
 <body>
 	
 	<header>
-		<h1>Leaguebuddy</h1>
-		<nav>
-			<ul>
-				<li><a href="#">Guides</a></li>
-				<li><a href="#">Account</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
+		<nav class="top-bar">
+		<ul>
+			<li class="name"><h1><a href="#">Leaguebuddy</a></h1></li>
+			<li class="toggle-topbar"><a href="#"></a></li>
+		</ul>
+		<section>
+		<ul class="left">
+			<li class="has-dropdown">
+			<a href="#">Champions</a>
+			
+				<ul class="dropdown">
+					
+					<li><label>Search Champions</label></li>
+					<li class="search">
+						<form>
+							<input type="search">
+						</form>
+					</li>
+					<li class="divider"></li>
+					<li><label>Popular Champions</label></li>
+					<li><a href="#">Corki</a></li>
+					<li><a href="#">Talon</a></li>
+					<li><a href="#">Maokai</a></li>
+					<li class="divider"></li>
+					<li><a href="#/champions/" class="button">All Champions</a></li>
+				</ul>
+			</li>
+		</ul>
+		</section>
 		</nav>
 	</header>
+		
+			
 	
 	<div id="main" ng-view>
 	

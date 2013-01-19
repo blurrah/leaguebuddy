@@ -1,19 +1,11 @@
-<div id="championInput" class="reveal-modal medium">
-	<h2>Hello Summoner!</h2>
-	<p class="lead">Please enter your Summoner name</p>
-	<input type="text" ng-model="summonerName">
-</div>
+
 <section>
 		<h2>Welcome {{summonerName}}!</h2>
 			<a href="#" data-reveal-id="championInput">TEST YO!</a>
-			<select ng-model="orderProp">
-				<option value="name">Alphabetical</option>
-				<option value="age">Newest</option>
-			</select>
 			<input type="text" ng-model="query">
 			
 			<ul>
-				<li ng-repeat="champion in champions | filter:query | orderBy:orderProp">
+				<li ng-repeat="champion in champions | filter:query">
 					<a href="#/champion/{{champion.name}}">{{champion.name}}</a>
 				</li>
 			</ul>
