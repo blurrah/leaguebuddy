@@ -1,12 +1,19 @@
-function IntroCtrl($scope, localStorageService) {
+function IntroCtrl($scope, localStorageService, Summoner, Champion) {
 	localStorageService.clearAll();
-	$scope.summonerName = "Summoner";
-	$scope.typeahead = ['Blurrahz', 'Prelth', 'Piemelplas', 'Awesome Possum'];
+	$scope.summonerName = '';
 
 $scope.$watch('summonerName', function(value){
 	localStorageService.add('summonerName', value);
 	$scope.summonerName = localStorageService.get('summonerName');
+	var dataOphalen = $scope.summonerName.toLowerCase();
+	$scope.summoner = Summoner.get({summonerID: dataOphalen }, function(summoner){
+	$scope.summonerLevel = summoner.data.summonerLevel;
+	$scope.soloQ = summoner.data.soloqElo;
+	$scope.summonerIcon = summoner.data.profileIconId;
+	});
 });
+	$scope.champions = Champion.query();
+	
 
 }
 

@@ -1,14 +1,32 @@
 <div id="championInput" class="reveal-modal medium">
 	<h2>Hello Summoner!</h2>
 	<p class="lead">Please enter your Summoner name</p>
-	<input type="text" id="summonerName" ng-model="summonerName" bs-typeahead="typeahead" data-provide="typeahead">
+	<input type="text" id="summonerName" ng-model="summonerName">
+	<div ng-show="summonerLevel">
+	<p>Is this you?</p>
+	<ul>
+		<li><img style="float: left;" width="64" height="64" src="images/icons/summoner/profileIcon{{summonerIcon}}.jpg"></li>
+		<li><strong>Name:</strong> {{summonerName}}</li>
+		<li><strong>Level:</strong> {{summonerLevel}}</li>
+	</ul>
+	<a class="button" href="#" data-reveal-id="secondModal">Yes, yes it is.</a>
+	</div>
+	 <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="secondModal" class="reveal-modal medium">
+	<h2>Welcome {{summonerName}}!</h2>
+	<p>We're most delighted that you want to use our service. We would like to ask you some questions before we get started properly. First off, which champions are your favorites?</p>
+	<input type="text" ng-model="championQuery">
+	<li ng-repeat="champion in champions | filter:championQuery | emptyifblank:championQuery">
+		{{champion.name}}
+	</li>
 	 <a class="close-reveal-modal">&#215;</a>
 </div>
 </section>
 <section class="intro">
-<h2>Hello {{summonerName}}!</p>
-<p>Welcome to Leaguebuddy, we're assuming that this is your first visit to the site</p>
-<p>You can start by pushing on the button below and entering your summoner name, the rest will follow.</p>
+<h2>Hello!</h2>
+<h5 class="subheader">Welcome to Leaguebuddy, we're assuming that this is your first visit to the site. You can start by pushing on the button below and entering your summoner name, the rest will follow</h5>
 <p>If you want you can always skip the intro and hop on over to the other pages directly, but you won't be able to save any preferences for future visits if you don't follow these simple steps</p>
 <a href="#" class="button"data-reveal-id="championInput">Enter name</a>
-<p>Herro scoobie!</p>
+

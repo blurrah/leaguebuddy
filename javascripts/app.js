@@ -38,7 +38,15 @@
 })(jQuery, this);
 
 
-angular.module('championcat', ['championcatServices', 'LocalStorageModule']).
+angular.module('championcat', ['championcatServices', 'summonercatServices', 'LocalStorageModule']).
+  filter('emptyifblank', function(){
+return function(object, query){
+		if(!query){
+			return
+		 }else{
+			return object;
+		}
+}}).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/champions', {templateUrl: 'partials/champion-list.html',   controller: ChampionListCtrl}).
@@ -48,10 +56,19 @@ angular.module('championcat', ['championcatServices', 'LocalStorageModule']).
 }]);
 
 
+
+
 angular.module('championcatServices', ['ngResource']).
 	factory('Champion', function($resource){
 		return $resource('javascripts/json/champions.json', {}, {
 			query: {method:'GET', isArray:true}
 		});
 	});
+
+angular.module('summonercatServices', ['ngResource']).
+    factory('Summoner', function($resource){
+  return $resource('javascripts/json/summoner/:summonerID.json', {}, {
+    query: {method:'GET', params:{summonerId:'blurrahz'}, isArray:true}
+  });
+});
 
